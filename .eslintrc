@@ -14,7 +14,16 @@
     "max-len": ["error", { "code": 100 }],
     "prefer-promise-reject-errors": ["off"],
     "react/jsx-filename-extension": ["off"],
-    "react/prop-types": ["warn"],
-    "no-return-assign": ["off"]
+    "react/prop-types": "warn",
+    "no-unused-vars": "warn",
+    "no-return-assign": ["off"],
+    "react/jsx-curly-brace-presence": ["off"]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
   }
 }
