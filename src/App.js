@@ -1,14 +1,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from 'pages/home';
+import Shop from 'pages/shop';
 
 import './App.css';
 
-const Hats = () => (
-  <div>
-    <h1>Hats page</h1>
-  </div>
-);
 function App() {
   return (
     <div>
@@ -16,8 +12,8 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/hats">
-          <Hats />
+        <Route path="/shop">
+          <Shop />
         </Route>
       </Switch>
     </div>
