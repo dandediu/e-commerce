@@ -1,0 +1,27 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+
+  .options {
+    width: 50%;
+    height: 100%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .option {
+      padding: 10px 15px;
+      text-transform: uppercase;
+    }
+
+    .link {
+      &:hover {
+        border-bottom: 1.5px solid black;
+      }
+    }
+  }
+}
