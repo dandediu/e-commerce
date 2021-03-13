@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from 'pages/home';
 import Shop from 'pages/shop';
 import SignInAndSignUp from 'pages/sign-in-and-sign-up';
 import Header from 'components/header';
+import { auth } from 'app-firebase/firebase.utils';
 
 import './App.css';
 
-function App() {
+const App = () => {
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setCurrentUser(user);
+
+      console.log('===>', user);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
   return (
     <div>
-      <Header />
+      <Header currentUser={currentUser} />
       <Switch>
         <Route exact path="/">
           <Home />
@@ -24,6 +39,6 @@ function App() {
       </Switch>
     </div>
   );
-}
+};
 
 export default App;
