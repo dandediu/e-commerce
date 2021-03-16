@@ -14,16 +14,15 @@ const config = {
 
 firebase.initializeApp(config);
 
-export const auth = firebase.auth();
-export const fireStore = firebase.firestore();
-
+const auth = firebase.auth();
+const fireStore = firebase.firestore();
 const provider = new firebase.auth.GoogleAuthProvider();
+
 provider.setCustomParameters({ prompt: 'select_account' });
 
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
-
-export const createUserProfileDocument = async (userAuth, additionalData) => {
-  if (!userAuth) return;
+const signInWithGoogle = () => auth.signInWithPopup(provider);
+const createUserProfileDocument = async (userAuth, additionalData) => {
+  if (!userAuth) return null;
 
   const userRef = fireStore.doc(`users/${userAuth.uid}`);
   const snapShot = await userRef.get();
@@ -46,5 +45,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
   return userRef;
 };
+
+export { auth, fireStore, signInWithGoogle, createUserProfileDocument };
 
 export default firebase;
