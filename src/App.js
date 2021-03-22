@@ -4,7 +4,7 @@ import Home from 'pages/home';
 import Shop from 'pages/shop';
 import SignInAndSignUp from 'pages/sign-in-and-sign-up';
 import Header from 'components/header';
-import { auth, createUserProfileDocument } from 'app-firebase/firebase.utils';
+import { auth, createUserProfileDocument } from 'api/utils';
 
 import './App.css';
 
@@ -17,11 +17,10 @@ const App = () => {
         const userRef = await createUserProfileDocument(user);
 
         userRef.onSnapshot((snapShot) => {
-          console.log('SNAPSHOT ===>', snapShot);
           setCurrentUser({ id: snapShot.id, ...snapShot.data() });
         });
 
-        console.log(currentUser);
+        // console.log('USER', currentUser);
       } else {
         setCurrentUser(user);
       }

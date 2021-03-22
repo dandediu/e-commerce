@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import CustomButton from 'components/custom-button';
 import FormInput from 'components/form-input';
 
-import { auth, createUserProfileDocument } from 'app-firebase';
+import { auth, createUserProfileDocument } from 'api/utils';
 
 import './sign-up.styles.scss';
 
@@ -12,30 +12,33 @@ const SignUp = (props) => {
   const [formState, setFormState] = useState(initialState);
   const { displayName, password, confirmPassword, email } = formState;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (password !== confirmPassword) {
-      alert(`Passwords don't match.`);
-      return null;
-    }
-
+  const createUser = async () => {
     try {
-        const {user} = await auth.createUserWithEmailAndPassword(email, password);
+      const res = await auth.createUserWithEmailAndPassword(email, password);
+      const { user } = res;
 
-       await createUserProfileDocument(user, {displayName});
-
-        setFormState(initialState);
+      await createUserProfileDocument(user, { displayName });
+      setFormState(initialState);
     } catch (error) {
       console.error(error);
     }
   };
 
-  const handleChange =(e) => {
-    const {name, value} = e.target;
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-    setFormState({...formState, [name]: value});
-  }
+    if (password !== confirmPassword) {
+      alert(`Passwords don't match.`);
+    }
+
+    createUser();
+  };
+
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormState({ ...formState, [name]: value });
+  };
 
   return (
     <div className="sign-up">
