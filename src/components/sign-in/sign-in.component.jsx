@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import FormInput from 'components/form-input';
 import CustomButton from 'components/custom-button';
+import { signInWithGoogle } from 'app-firebase/firebase.utils';
 
 import './sign-in.styles.scss';
 
@@ -20,9 +21,9 @@ const SignIn = (props) => {
   };
 
   const onHandleChange = (e) => {
-    const { value, name } = e.target.value;
+    const { name, value } = e.target;
 
-    setFormValue({ [name]: value });
+    setFormValue({ ...formValue, [name]: value });
   };
 
   return (
@@ -32,24 +33,28 @@ const SignIn = (props) => {
       <form onSubmit={handleSubmit}>
         <FormInput
           id="Email"
+          label="Email"
           name="email"
           type="email"
           value={email}
-          label="Email"
           handleChange={onHandleChange}
           required
         />
         <FormInput
-          id="password"
+          id="Password"
+          label="Password"
           name="password"
           type="password"
           value={password}
-          label="Password"
           handleChange={onHandleChange}
           required
         />
-
-        <CustomButton type="submit">Sign SignIn</CustomButton>
+        <div className="buttons-wrapper">
+          <CustomButton type="submit">SignIn</CustomButton>
+          <CustomButton type="button" onClick={signInWithGoogle} isGoogleSignIn>
+            Sign In with Google
+          </CustomButton>
+        </div>
       </form>
     </div>
   );
