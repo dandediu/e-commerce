@@ -4,7 +4,7 @@ import Home from 'pages/home';
 import Shop from 'pages/shop';
 import SignInAndSignUp from 'pages/sign-in-and-sign-up';
 import Header from 'components/header';
-import { auth, createUserProfileDocument } from 'app-firebase/firebase.utils';
+import { auth, createUserProfileDocument } from 'api/utils';
 
 import './App.css';
 
@@ -12,11 +12,18 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      // setCurrentUser(user);
-      createUserProfileDocument(user);
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        const userRef = await createUserProfileDocument(user);
 
-      // console.log('===>', user);
+        userRef.onSnapshot((snapShot) => {
+          setCurrentUser({ id: snapShot.id, ...snapShot.data() });
+        });
+
+        // console.log('USER', currentUser);
+      } else {
+        setCurrentUser(user);
+      }
     });
 
     return () => {

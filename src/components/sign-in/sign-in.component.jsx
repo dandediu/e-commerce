@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import FormInput from 'components/form-input';
 import CustomButton from 'components/custom-button';
-import { signInWithGoogle } from 'app-firebase/firebase.utils';
+import { auth, signInWithGoogle } from 'api/utils';
 
 import './sign-in.styles.scss';
 
@@ -14,10 +14,15 @@ const SignIn = (props) => {
 
   const { email, password } = formValue;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setFormValue({ email: '', password: '' });
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      setFormValue({ email: '', password: '' });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const onHandleChange = (e) => {
