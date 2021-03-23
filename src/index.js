@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import combineProviders from 'utils/combine-providers';
+import { Provider } from 'react-redux';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -10,13 +11,13 @@ import './index.css';
 const CombinedProviders = combineProviders();
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider>
     <BrowserRouter>
       {/* <CombinedProviders> */}
       <App />
       {/* </CombinedProviders> */}
     </BrowserRouter>
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root'),
 );
 
