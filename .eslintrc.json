@@ -21,6 +21,7 @@
   "rules": {
     "max-len": ["error", { "code": 100 }],
     "prefer-promise-reject-errors": ["off"],
+    "import/prefer-default-export": ["warn"],
     "react/jsx-filename-extension": ["off"],
     "react/prop-types": "warn",
     "no-unused-vars": "warn",

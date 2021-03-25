@@ -1,17 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import combineProviders from 'utils/combine-providers';
 import { Provider } from 'react-redux';
-import App from './App';
+
+import combineProviders from 'utils/combine-providers';
+import store from 'store';
 import reportWebVitals from './reportWebVitals';
+import App from './App';
 
 import './index.css';
 
 const CombinedProviders = combineProviders();
 
 ReactDOM.render(
-  <Provider>
+  <Provider store={store}>
     <BrowserRouter>
       {/* <CombinedProviders> */}
       <App />
