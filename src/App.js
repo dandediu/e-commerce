@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Home from 'pages/home';
 import Shop from 'pages/shop';
 import SignInAndSignUp from 'pages/sign-in-and-sign-up';
@@ -11,7 +11,7 @@ import { setCurrentUser } from 'store/user';
 
 import './App.css';
 
-const App = ({ setUser }) => {
+const App = ({ setUser, currentUser }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
@@ -20,8 +20,6 @@ const App = ({ setUser }) => {
         userRef.onSnapshot((snapShot) => {
           setUser({ id: snapShot.id, ...snapShot.data() });
         });
-
-        // console.log('USER', currentUser);
       } else {
         setUser(user);
       }
@@ -31,6 +29,8 @@ const App = ({ setUser }) => {
       unsubscribe();
     };
   }, []);
+
+  const renderAuthOrRedirect = () => (currentUser ? <Redirect to="/" /> : <SignInAndSignUp />);
 
   return (
     <div>
@@ -42,9 +42,7 @@ const App = ({ setUser }) => {
         <Route path="/shop">
           <Shop />
         </Route>
-        <Route path="/signin">
-          <SignInAndSignUp />
-        </Route>
+        <Route exact path="/signin" render={renderAuthOrRedirect} />
       </Switch>
     </div>
   );
@@ -52,10 +50,15 @@ const App = ({ setUser }) => {
 
 App.propTypes = {
   setUser: PropTypes.func.isRequired,
+  currentUser: PropTypes.shape({}),
 };
+
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   setUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
