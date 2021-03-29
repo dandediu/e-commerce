@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { ReactComponent as Logo } from 'assets/crown.svg';
 import { auth } from 'api/utils';
 import { connect } from 'react-redux';
+import CartIcon from 'components/cart-icon';
+import CartDropDown from 'components/cart-dropdown';
+import { ReactComponent as Logo } from 'assets/crown.svg';
 
 import './header.styles.scss';
 
@@ -23,16 +25,22 @@ const Header = ({ currentUser }) => (
           Contact
         </Link>
       </li>
+      <li>
+        {currentUser ? (
+          <div className="option" onClick={() => auth.signOut()}>
+            Sign out
+          </div>
+        ) : (
+          <Link className="option" to="/signin">
+            Sign In
+          </Link>
+        )}
+      </li>
+      <li>
+        <CartIcon />
+      </li>
     </ul>
-    {currentUser ? (
-      <div className="option" onClick={() => auth.signOut()}>
-        Sign out
-      </div>
-    ) : (
-      <Link className="option" to="/signin">
-        Sign In
-      </Link>
-    )}
+    <CartDropDown />
   </div>
 );
 
