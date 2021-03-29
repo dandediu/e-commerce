@@ -44,9 +44,9 @@ const Header = ({ currentUser, hidden }) => (
   </div>
 );
 
-PropTypes.propTypes = {
-  currentUser: PropTypes.shape({}),
-  hidden: PropTypes.bool,
+Header.propTypes = {
+  currentUser: PropTypes.shape({}).isRequired,
+  hidden: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
