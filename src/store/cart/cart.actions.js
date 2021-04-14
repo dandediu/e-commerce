@@ -1,7 +1,7 @@
-import cartAtionsTypes from './cart.types';
+import cartActionsTypes from './cart.types';
 
 const toggleCartHidden = () => ({
-  type: cartAtionsTypes.TOGGLE_CART_HIDDEN,
+  type: cartActionsTypes.TOGGLE_CART_HIDDEN,
 });
 
 export default { toggleCartHidden };

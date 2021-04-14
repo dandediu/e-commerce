@@ -1,5 +1,5 @@
-const cartAtionsTypes = {
+const cartActionsTypes = {
   TOGGLE_CART_HIDDEN: 'TOGGLE_CART_HIDDEN',
 };
 
-export default cartAtionsTypes;
+export default cartActionsTypes;

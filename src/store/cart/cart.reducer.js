@@ -1,6 +1,6 @@
-import cartAtionsTypes from './cart.types';
+import cartActionsTypes from './cart.types';
 
-const { TOGGLE_CART_HIDDEN } = cartAtionsTypes;
+const { TOGGLE_CART_HIDDEN } = cartActionsTypes;
 const INITIAL_STATE = { hidden: false };
 
 const cartReducer = (state = INITIAL_STATE, action) => {
