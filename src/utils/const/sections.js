@@ -3,7 +3,7 @@ const SECTIONS = [
     title: 'hats',
     imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
     id: 1,
-    linkUrl: 'hats',
+    linkUrl: 'shop/hats',
   },
   {
     title: 'jackets',
@@ -18,14 +18,14 @@ const SECTIONS = [
     linkUrl: 'shop/sneakers',
   },
   {
-    title: 'womens',
+    title: "women's",
     imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
     id: 4,
-    linkUrl: 'shop/womens',
+    linkUrl: 'shop/women',
     size: 'large',
   },
   {
-    title: 'mens',
+    title: "men's",
     imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
     id: 5,
     linkUrl: 'shop/mens',
