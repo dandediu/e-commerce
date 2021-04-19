@@ -9,7 +9,7 @@ import './collection-item.styles.scss';
 
 const CollectionItem = ({ item, addItem }) => {
   const { name, price, imageUrl } = item;
-  const addItemHandler = (newItem) => addItem(newItem);
+  const addItemHandler = () => addItem(item);
 
   return (
     <div className="collection-item">
