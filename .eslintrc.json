@@ -25,7 +25,7 @@
     "react/jsx-filename-extension": ["off"],
     "react/prop-types": "warn",
     "no-unused-vars": "warn",
-    "react/require-default-props": "warn",
+    "react/require-default-props": "off",
     "react/jsx-props-no-spreading": ["off"],
     "no-return-assign": ["off"],
     "consistent-return": ["off"],
