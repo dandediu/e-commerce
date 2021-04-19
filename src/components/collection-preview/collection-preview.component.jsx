@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CollectionItem from 'components/collection-item';
+import { collectionItemTypes } from 'utils/prop-types';
 
 import './collection-preview.styles.scss';
 
@@ -9,14 +10,17 @@ const CollectionPreview = ({ title, items }) => (
     <h1 className="title">{title.toUpperCase()}</h1>
     <div className="preview">
       {items
-        .filter((item, idx) => idx < 4)
-        .map(({ id, ...otherItemProps }) => (
-          <CollectionItem key={id} {...otherItemProps} />
+        .filter((_, idx) => idx < 4)
+        .map((item) => (
+          <CollectionItem key={item.id} item={item} />
         ))}
     </div>
   </div>
 );
 
-CollectionPreview.propTypes = {};
+CollectionPreview.propTypes = {
+  title: PropTypes.string,
+  items: PropTypes.arrayOf(collectionItemTypes),
+};
 
 export default CollectionPreview;
