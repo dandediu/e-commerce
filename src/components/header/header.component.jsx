@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { auth } from 'api/utils';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+import { auth } from 'api/utils';
 import CartIcon from 'components/cart-icon';
 import CartDropDown from 'components/cart-dropdown';
 import { ReactComponent as Logo } from 'assets/crown.svg';
+import { cartSelectors } from 'store/cart';
+import { userSelectors } from 'store/user';
 
 import './header.styles.scss';
 
@@ -49,9 +53,9 @@ Header.propTypes = {
   hidden: PropTypes.bool,
 };
 
-const mapStateToProps = ({ user: { currentUser }, cart: { hidden } }) => ({
-  currentUser,
-  hidden,
+const mapStateToProps = createStructuredSelector({
+  currentUser: userSelectors.selectCurrentUser,
+  hidden: cartSelectors.selectCartHidden,
 });
 
 export default connect(mapStateToProps)(Header);

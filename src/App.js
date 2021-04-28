@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
 import Home from 'pages/home';
 import Shop from 'pages/shop';
 import SignInAndSignUp from 'pages/sign-in-and-sign-up';
 import Header from 'components/header';
 import { auth, createUserProfileDocument } from 'api/utils';
-import { connect } from 'react-redux';
-import { setCurrentUser } from 'store/user';
+import { setCurrentUser, userSelectors } from 'store/user';
 
 import './App.css';
 
@@ -53,8 +55,8 @@ App.propTypes = {
   currentUser: PropTypes.shape({}),
 };
 
-const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser,
+const mapStateToProps = createStructuredSelector({
+  currentUser: userSelectors.selectCurrentUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({
