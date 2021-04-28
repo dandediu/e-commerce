@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
 import { cartActions, cartSelectors } from 'store/cart';
 import { ReactComponent as ShoppingIcon } from 'assets/shopping-bag.svg';
 
@@ -18,8 +20,8 @@ CartIcon.propTypes = {
   itemCount: PropTypes.number,
 };
 
-const mapStateToProps = (state) => ({
-  itemCount: cartSelectors.selectCartItemsCount(state),
+const mapStateToProps = createStructuredSelector({
+  itemCount: cartSelectors.selectCartItemsCount,
 });
 
 const mapDispatchToProps = (dispatch) => ({
