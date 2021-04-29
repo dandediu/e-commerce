@@ -6,7 +6,9 @@ import { createStructuredSelector } from 'reselect';
 
 import Home from 'pages/home';
 import Shop from 'pages/shop';
+import Checkout from 'pages/checkout';
 import SignInAndSignUp from 'pages/sign-in-and-sign-up';
+
 import Header from 'components/header';
 import { auth, createUserProfileDocument } from 'api/utils';
 import { setCurrentUser, userSelectors } from 'store/user';
@@ -43,6 +45,9 @@ const App = ({ setUser, currentUser }) => {
         </Route>
         <Route path="/shop">
           <Shop />
+        </Route>
+        <Route path="/checkout">
+          <Checkout />
         </Route>
         <Route exact path="/signin" render={renderAuthOrRedirect} />
       </Switch>
