@@ -28,7 +28,7 @@ const SECTIONS = [
     title: "men's",
     imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
     id: 5,
-    linkUrl: 'shop/mens',
+    linkUrl: 'shop/men',
     size: 'large',
   },
 ];
