@@ -43,9 +43,7 @@ const App = ({ setUser, currentUser }) => {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/shop">
-          <Shop />
-        </Route>
+        <Route path="/shop" component={(props) => <Shop {...props} />} />
         <Route path="/checkout">
           <Checkout />
         </Route>

@@ -1,5 +1,5 @@
-const COLLECTIONS = [
-  {
+const COLLECTIONS = {
+  hats: {
     id: 1,
     title: 'Hats',
     routeName: 'hats',
@@ -60,7 +60,7 @@ const COLLECTIONS = [
       },
     ],
   },
-  {
+  sneakers: {
     id: 2,
     title: 'Sneakers',
     routeName: 'sneakers',
@@ -115,7 +115,7 @@ const COLLECTIONS = [
       },
     ],
   },
-  {
+  jackets: {
     id: 3,
     title: 'Jackets',
     routeName: 'jackets',
@@ -152,7 +152,7 @@ const COLLECTIONS = [
       },
     ],
   },
-  {
+  women: {
     id: 4,
     title: "Women's",
     routeName: 'womens',
@@ -201,7 +201,7 @@ const COLLECTIONS = [
       },
     ],
   },
-  {
+  men: {
     id: 5,
     title: "Men's",
     routeName: 'mens',
@@ -244,6 +244,6 @@ const COLLECTIONS = [
       },
     ],
   },
-];
+};
 
 export default { COLLECTIONS };

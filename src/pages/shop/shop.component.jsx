@@ -1,11 +1,21 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
+
 import CollectionOverview from 'components/collection-overview';
+import Collection from 'pages/collection';
 
 import './shop.styles.scss';
 
-const Shop = () => (
+const Shop = ({ match }) => (
   <div className="shop">
-    <CollectionOverview />
+    <Route exact path={`${match?.path}`}>
+      <CollectionOverview />
+    </Route>
+    <Route
+      exact
+      path={`${match?.path}/:collectionId`}
+      component={(props) => <Collection {...props} />}
+    />
   </div>
 );
 
