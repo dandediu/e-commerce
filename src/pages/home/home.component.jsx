@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Directory from 'components/directory';
 
-import './home.styles.scss';
+// import './home.styles.scss';
+
+import { HomeContainer } from './home.styles';
 
 const Home = () => (
-  <div className="homepage">
+  <HomeContainer>
     <Directory />
-  </div>
+  </HomeContainer>
 );
 
 Home.propTypes = {};

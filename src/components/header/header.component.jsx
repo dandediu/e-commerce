@@ -11,41 +11,33 @@ import { ReactComponent as Logo } from 'assets/crown.svg';
 import { cartSelectors } from 'store/cart';
 import { userSelectors } from 'store/user';
 
-import './header.styles.scss';
+import {
+  HeaderContainer,
+  LogoContainer,
+  OptionsContainer,
+  OptionLink,
+  OptionDiv,
+} from './header.styles';
 
 const Header = ({ currentUser, hidden }) => (
-  <div className="header">
-    <Link to="/">
+  <HeaderContainer>
+    <LogoContainer to="/">
       <Logo className="logo" />
-    </Link>
-    <ul className="options">
-      <li className="option">
-        <Link to="/shop" className="link">
-          Shop
-        </Link>
-      </li>
-      <li className="option">
-        <Link to="/shop" className="link">
-          Contact
-        </Link>
-      </li>
-      <li>
-        {currentUser ? (
-          <div className="option" onClick={() => auth.signOut()}>
-            Sign out
-          </div>
-        ) : (
-          <Link className="option" to="/signin">
-            Sign In
-          </Link>
-        )}
-      </li>
-      <li>
-        <CartIcon />
-      </li>
-    </ul>
+    </LogoContainer>
+    <OptionsContainer>
+      <OptionLink>Shop</OptionLink>
+      <OptionLink to="/shop" className="link">
+        Contact
+      </OptionLink>
+      {currentUser ? (
+        <OptionDiv onClick={() => auth.signOut()}>Sign out</OptionDiv>
+      ) : (
+        <OptionLink to="/signin">Sign In</OptionLink>
+      )}
+      <CartIcon />
+    </OptionsContainer>
     {hidden && <CartDropDown />}
-  </div>
+  </HeaderContainer>
 );
 
 Header.propTypes = {
