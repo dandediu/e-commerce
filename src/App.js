@@ -37,7 +37,7 @@ const App = ({ setUser, currentUser }) => {
   const renderAuthOrRedirect = () => (currentUser ? <Redirect to="/" /> : <SignInAndSignUp />);
 
   return (
-    <div>
+    <div className="app">
       <Header />
       <Switch>
         <Route exact path="/">
