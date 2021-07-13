@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 
-const HomeContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 80px;
-`;
+const HomeContainer = styled.div``;
 
 export { HomeContainer };

@@ -2,18 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
-import './menu-item.styles.scss';
+import { MenuItemWrapper, BackgroundImage, Content, Title, SubTitle } from './menu-item.styles';
 
-const MenuItem = ({ title, imageUrl, size, linkUrl, history, match }) => (
-  <div className={`${size} menu-item`} onClick={() => history.push(`${match.url}${linkUrl}`)}>
-    <div className="background-image" style={{ backgroundImage: `url(${imageUrl})` }} />
-    <div className="content">
-      <h1 className="title">{title}</h1>
-      <span className="subtitle">Shop Now</span>
-    </div>
-  </div>
+const MenuItem = ({ title, imageUrl, isLarge, linkUrl, history, match }) => (
+  <MenuItemWrapper isLarge={isLarge} onClick={() => history.push(`${match.url}${linkUrl}`)}>
+    <BackgroundImage imageUrl={imageUrl} />
+    <Content>
+      <Title>{title}</Title>
+      <SubTitle className="subtitle">Shop Now</SubTitle>
+    </Content>
+  </MenuItemWrapper>
 );
 
-MenuItem.propTypes = { title: PropTypes.string, imageUrl: PropTypes.string };
+MenuItem.propTypes = {
+  title: PropTypes.string,
+  imageUrl: PropTypes.string,
+  isLarge: PropTypes.bool,
+  linkUrl: PropTypes.string,
+  history: PropTypes.shape({ push: PropTypes.func }),
+  match: PropTypes.shape({ url: PropTypes.string }),
+};
 
 export default withRouter(MenuItem);

@@ -1,8 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Directory from 'components/directory';
-
-// import './home.styles.scss';
+import Directory from 'components/menu';
 
 import { HomeContainer } from './home.styles';
 
@@ -11,7 +8,5 @@ const Home = () => (
     <Directory />
   </HomeContainer>
 );
-
-Home.propTypes = {};
 
 export default Home;

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+
 import FormInput from 'components/form-input';
 import CustomButton from 'components/custom-button';
 import { auth, signInWithGoogle } from 'api/utils';
 
-import './sign-in.styles.scss';
+import { SignInWrapper, ButtonsWrapper } from './sign-in.styles';
 
-const SignIn = (props) => {
+const SignIn = () => {
   const [formValue, setFormValue] = useState({
     email: '',
     password: '',
@@ -32,7 +32,7 @@ const SignIn = (props) => {
   };
 
   return (
-    <div className="sign-in">
+    <SignInWrapper>
       <h2>I already have an account</h2>
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
@@ -54,14 +54,14 @@ const SignIn = (props) => {
           handleChange={onHandleChange}
           required
         />
-        <div className="buttons-wrapper">
-          <CustomButton type="submit">SignIn</CustomButton>
+        <ButtonsWrapper>
+          <CustomButton type="submit">Sign In</CustomButton>
           <CustomButton type="button" onClick={signInWithGoogle} isGoogleSignIn>
-            Sign In with Google
+            With Google
           </CustomButton>
-        </div>
+        </ButtonsWrapper>
       </form>
-    </div>
+    </SignInWrapper>
   );
 };
 

@@ -7,11 +7,13 @@ import { createStructuredSelector } from 'reselect';
 import Home from 'pages/home';
 import Shop from 'pages/shop';
 import Checkout from 'pages/checkout';
-import SignInAndSignUp from 'pages/sign-in-and-sign-up';
+import SignInAndSignUp from 'pages/auth';
 
 import Header from 'components/header';
+import Footer from 'components/footer';
 import { auth, createUserProfileDocument } from 'api/utils';
 import { setCurrentUser, userSelectors } from 'store/user';
+import APP_ROUTES from 'utils/const/app-routes';
 
 import './App.css';
 
@@ -38,17 +40,22 @@ const App = ({ setUser, currentUser }) => {
 
   return (
     <div className="app">
-      <Header />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/shop" component={(props) => <Shop {...props} />} />
-        <Route path="/checkout">
-          <Checkout />
-        </Route>
-        <Route exact path="/signin" render={renderAuthOrRedirect} />
-      </Switch>
+      <div className="container">
+        <Header className="container" />
+      </div>
+      <main className="container">
+        <Switch>
+          <Route exact path={APP_ROUTES.home}>
+            <Home />
+          </Route>
+          <Route path={APP_ROUTES.shop} component={(props) => <Shop {...props} />} />
+          <Route path={APP_ROUTES.checkout}>
+            <Checkout />
+          </Route>
+          <Route exact path={APP_ROUTES.signIn} render={renderAuthOrRedirect} />
+        </Switch>
+      </main>
+      <Footer />
     </div>
   );
 };

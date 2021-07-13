@@ -7,15 +7,14 @@ import CollectionPreview from 'components/collection-preview';
 import { shopSelectors } from 'store/shop';
 import { collectionTypes } from 'utils/prop-types';
 
-import './collection-overview.styles.scss';
+import { CollectionOverviewList } from './collection-overview.styles';
 
 const CollectionOverview = ({ collections }) => (
-  <div className="collection-overview">
-    {console.log(collections)}
+  <CollectionOverviewList>
     {collections.map(({ id, ...otherCollectionProps }) => (
       <CollectionPreview key={id} {...otherCollectionProps} />
     ))}
-  </div>
+  </CollectionOverviewList>
 );
 
 CollectionOverview.propTypes = {

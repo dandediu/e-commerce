@@ -1,14 +1,12 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
+import CustomButton from 'components/custom-button';
 import publishableKey from './publishable-key';
-
-import './stripe-button.styles.scss';
 
 const StripeButton = ({ price }) => {
   const priceForStripe = price * 100;
 
   const onToken = (token) => {
-    console.log(token);
     alert('Payment successful!');
   };
 
@@ -24,7 +22,12 @@ const StripeButton = ({ price }) => {
       panelLabel="Pay Now"
       token={onToken}
       stripeKey={publishableKey}
-    />
+      ComponentClass="div"
+    >
+      <CustomButton isStripe type="button">
+        Pay Now
+      </CustomButton>
+    </StripeCheckout>
   );
 };
 

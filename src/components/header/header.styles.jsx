@@ -1,22 +1,27 @@
 import styled, { css } from 'styled-components';
-import breakpoints from 'utils/breakpoints';
 import { Link } from 'react-router-dom';
+import breakpoints from 'utils/styles/breakpoints';
+import spacing from 'utils/styles/spacing';
 
 const optionCommonStyles = css`
   text-transform: uppercase;
   cursor: pointer;
   display: inline-block;
-  padding: 10px 15px;
+  padding: ${spacing.smSpace} ${spacing.smSpace};
   border-bottom: 1px solid transparent;
 
   &:hover {
     border-bottom: 1px solid black;
   }
+
+  @media ${breakpoints.laptop} {
+    padding: ${spacing.smSpace} ${spacing.space};
+  }
 `;
 
 export const HeaderContainer = styled.div`
   width: 100%;
-  margin-bottom: 25px;
+  margin-bottom: ${spacing.lgSpace};
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -24,26 +29,28 @@ export const HeaderContainer = styled.div`
   @media ${breakpoints.laptop} {
     justify-content: space-between;
     flex-direction: row;
+    padding: 0 ${spacing.mdSpace};
   }
 `;
 
 export const LogoContainer = styled(Link)`
   cursor: pointer;
-  margin: 15px 0;
+  margin: ${spacing.smSpace} 0;
 
   &:hover {
     opacity: 0.9;
   }
 `;
 
-export const OptionsList = styled.ul`
+export const NavList = styled.ul`
   display: flex;
   align-items: center;
   list-style: none;
 `;
 
-export const Option = styled.li`
-  &:not(:last-child) {
+export const NavItem = styled.li`
+  &:last-child {
+    padding: 0 ${spacing.smSpace} ${spacing.xsSpace};
   }
 `;
 
@@ -53,4 +60,10 @@ export const OptionLink = styled(Link)`
 
 export const OptionDiv = styled.div`
   ${optionCommonStyles}
+`;
+
+export const DropDownWrapper = styled.div`
+  @media ${breakpoints.tablet} {
+    position: relative;
+  }
 `;

@@ -3,48 +3,50 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
+import APP_ROUTES from 'utils/const/app-routes';
 import { auth } from 'api/utils';
 import CartIcon from 'components/cart-icon';
-import CartDropDown from 'components/cart-dropdown';
+import CartDropDown from 'components/dropdown';
 import { ReactComponent as Logo } from 'assets/crown.svg';
 import { cartSelectors } from 'store/cart';
 import { userSelectors } from 'store/user';
 
 import {
   HeaderContainer,
+  DropDownWrapper,
   LogoContainer,
-  OptionsList,
-  Option,
+  NavList,
+  NavItem,
   OptionLink,
   OptionDiv,
 } from './header.styles';
 
 const Header = ({ currentUser, hidden }) => (
   <HeaderContainer>
-    <LogoContainer to="/">
+    <LogoContainer to={APP_ROUTES.home}>
       <Logo />
     </LogoContainer>
-    <OptionsList>
-      <Option>
-        <OptionLink>Shop</OptionLink>
-      </Option>
-      <Option>
-        <OptionLink to="/shop" className="link">
-          Contact
-        </OptionLink>
-      </Option>
-      <Option>
+    <NavList>
+      <NavItem>
+        <OptionLink to={APP_ROUTES.shop}>Shop</OptionLink>
+      </NavItem>
+      <NavItem>
+        <OptionLink to={APP_ROUTES.contact}>Contact</OptionLink>
+      </NavItem>
+      <NavItem>
         {currentUser ? (
           <OptionDiv onClick={() => auth.signOut()}>Sign out</OptionDiv>
         ) : (
-          <OptionLink to="/signin">Sign In</OptionLink>
+          <OptionLink to={APP_ROUTES.signIn}>Sign In</OptionLink>
         )}
-      </Option>
-      <Option>
-        <CartIcon />
-      </Option>
-    </OptionsList>
-    {hidden && <CartDropDown />}
+      </NavItem>
+      <NavItem>
+        <DropDownWrapper>
+          <CartIcon />
+          {hidden && <CartDropDown />}
+        </DropDownWrapper>
+      </NavItem>
+    </NavList>
   </HeaderContainer>
 );
 
