@@ -1,21 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CollectionItem from 'components/collection-item';
-import { collectionItemTypes } from 'utils/prop-types';
 
-import './collection-preview.styles.scss';
+import CollectionItem from 'components/collection-card';
+import { collectionItemTypes } from 'utils/prop-types';
+import uid from 'utils/uid';
+
+import {
+  CollectionPreviewWrapper,
+  Title,
+  CollectionPreviewList,
+  CollectionPreviewListItem,
+} from './collection-preview.styles';
 
 const CollectionPreview = ({ title, items }) => (
-  <div className="collection-preview">
-    <h1 className="title">{title.toUpperCase()}</h1>
-    <div className="preview">
+  <CollectionPreviewWrapper>
+    <Title>{title.toUpperCase()}</Title>
+    <CollectionPreviewList>
       {items
         .filter((_, idx) => idx < 4)
         .map((item) => (
-          <CollectionItem key={item.id} item={item} />
+          <CollectionPreviewListItem key={uid()}>
+            <CollectionItem item={item} />
+          </CollectionPreviewListItem>
         ))}
-    </div>
-  </div>
+    </CollectionPreviewList>
+  </CollectionPreviewWrapper>
 );
 
 CollectionPreview.propTypes = {

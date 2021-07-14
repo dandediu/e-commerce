@@ -8,38 +8,30 @@ import { cartSelectors } from 'store/cart';
 import { cartItemTypes } from 'utils/prop-types';
 import StripeButton from 'components/stripe-button';
 
-import './checkout.styles.scss';
+import {
+  CheckoutPageWrapper,
+  CheckoutHeader,
+  CheckoutTotal,
+  CheckoutFooter,
+  WarningMessage,
+} from './checkout.styles';
 
 const Checkout = ({ cartItems, total }) => (
-  <div className="checkout-page">
-    <div className="checkout-header">
-      <div className="header-block">
-        <span>Product</span>
-      </div>
-      <div className="header-block">
-        <span>Description</span>
-      </div>
-      <div className="header-block">
-        <span>Quantity</span>
-      </div>
-      <div className="header-block">
-        <span>Price</span>
-      </div>
-      <div className="header-block">
-        <span>Remove</span>
-      </div>
-    </div>
+  <CheckoutPageWrapper>
+    <CheckoutHeader>Checkout</CheckoutHeader>
     {cartItems.map((item) => (
       <CheckoutItem key={item.id} cartItem={item} />
     ))}
-    <div className="total">{`Total: $${total}`}</div>
-    <StripeButton price={total} />
-    <div className="test-warning">
+    <CheckoutFooter>
+      <CheckoutTotal>{`Total: $${total}`}</CheckoutTotal>
+      <StripeButton price={total} />
+    </CheckoutFooter>
+    <WarningMessage>
       *Please use following test credit card for payments.
       <br />
       4242 4242 4242 4242 = Exp: 01/24 - CVV: 123
-    </div>
-  </div>
+    </WarningMessage>
+  </CheckoutPageWrapper>
 );
 
 Checkout.propTypes = {

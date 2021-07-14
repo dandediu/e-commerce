@@ -1,28 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import CollectionItem from 'components/collection-card';
 
-import CollectionItem from 'components/collection-item';
 import { shopSelectors } from 'store/shop';
 import { collectionTypes } from 'utils/prop-types';
+import uid from 'utils/uid';
 
-import './collection.styles.scss';
+import { CollectionWrapper, CollectionList, Title } from './collection.styles';
 
-const Collection = ({ collection }) => {
+const CollectionPage = ({ collection }) => {
   const { title, items } = collection;
 
   return (
-    <div className="collection">
-      <h2>{title}</h2>
-      <div className="items">
+    <CollectionWrapper>
+      <Title>{title}</Title>
+      <CollectionList>
         {items.map((item) => (
-          <CollectionItem key={item.id} item={item} />
+          <CollectionItem key={uid()} item={item} />
         ))}
-      </div>
-    </div>
+      </CollectionList>
+    </CollectionWrapper>
   );
 };
 
-Collection.propTypes = {
+CollectionPage.propTypes = {
   collection: collectionTypes,
 };
 
@@ -30,4 +31,4 @@ const mapStateToProps = (state, ownProps) => ({
   collection: shopSelectors.selectCollection(ownProps.match.params.collectionId)(state),
 });
 
-export default connect(mapStateToProps)(Collection);
+export default connect(mapStateToProps)(CollectionPage);

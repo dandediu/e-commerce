@@ -1,51 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
+import APP_ROUTES from 'utils/const/app-routes';
 import { auth } from 'api/utils';
 import CartIcon from 'components/cart-icon';
-import CartDropDown from 'components/cart-dropdown';
+import CartDropDown from 'components/dropdown';
 import { ReactComponent as Logo } from 'assets/crown.svg';
 import { cartSelectors } from 'store/cart';
 import { userSelectors } from 'store/user';
 
-import './header.styles.scss';
+import {
+  HeaderContainer,
+  DropDownWrapper,
+  LogoContainer,
+  NavList,
+  NavItem,
+  OptionLink,
+  OptionDiv,
+} from './header.styles';
 
 const Header = ({ currentUser, hidden }) => (
-  <div className="header">
-    <Link to="/">
-      <Logo className="logo" />
-    </Link>
-    <ul className="options">
-      <li className="option">
-        <Link to="/shop" className="link">
-          Shop
-        </Link>
-      </li>
-      <li className="option">
-        <Link to="/shop" className="link">
-          Contact
-        </Link>
-      </li>
-      <li>
+  <HeaderContainer>
+    <LogoContainer to={APP_ROUTES.home}>
+      <Logo />
+    </LogoContainer>
+    <NavList>
+      <NavItem>
+        <OptionLink to={APP_ROUTES.shop}>Shop</OptionLink>
+      </NavItem>
+      <NavItem>
+        <OptionLink to={APP_ROUTES.contact}>Contact</OptionLink>
+      </NavItem>
+      <NavItem>
         {currentUser ? (
-          <div className="option" onClick={() => auth.signOut()}>
-            Sign out
-          </div>
+          <OptionDiv onClick={() => auth.signOut()}>Sign out</OptionDiv>
         ) : (
-          <Link className="option" to="/signin">
-            Sign In
-          </Link>
+          <OptionLink to={APP_ROUTES.signIn}>Sign In</OptionLink>
         )}
-      </li>
-      <li>
-        <CartIcon />
-      </li>
-    </ul>
-    {hidden && <CartDropDown />}
-  </div>
+      </NavItem>
+      <NavItem>
+        <DropDownWrapper>
+          <CartIcon />
+          {hidden && <CartDropDown />}
+        </DropDownWrapper>
+      </NavItem>
+    </NavList>
+  </HeaderContainer>
 );
 
 Header.propTypes = {

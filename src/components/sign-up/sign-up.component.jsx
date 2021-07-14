@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import CustomButton from 'components/custom-button';
 import FormInput from 'components/form-input';
 
 import { auth, createUserProfileDocument } from 'api/utils';
 
-import './sign-up.styles.scss';
+import { SignUpWrapper } from './sign-up.styles';
 
-const SignUp = (props) => {
+const SignUp = () => {
   const initialState = { displayName: '', password: '', confirmPassword: '', email: '' };
   const [formState, setFormState] = useState(initialState);
   const { displayName, password, confirmPassword, email } = formState;
@@ -41,7 +40,7 @@ const SignUp = (props) => {
   };
 
   return (
-    <div className="sign-up">
+    <SignUpWrapper>
       <h2 className="title">I do not have an account</h2>
       <span>Sign up with your email and password</span>
       <form className="sign-up-form" onSubmit={handleSubmit}>
@@ -80,10 +79,8 @@ const SignUp = (props) => {
 
         <CustomButton type="submit">SING UP</CustomButton>
       </form>
-    </div>
+    </SignUpWrapper>
   );
 };
-
-SignUp.propTypes = {};
 
 export default SignUp;
