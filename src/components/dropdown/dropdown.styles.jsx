@@ -13,6 +13,7 @@ const DropdownInner = styled.div`
   z-index: 5;
   top: 0;
   left: 0;
+  right: 0px;
   bottom: 0;
 
   @media ${breakpoints.tablet} {

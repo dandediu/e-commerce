@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CollectionItem from 'components/collection-card';
 
+import CollectionCard from 'components/collection-card';
 import { shopSelectors } from 'store/shop';
 import { collectionTypes } from 'utils/prop-types';
 import uid from 'utils/uid';
@@ -16,7 +16,7 @@ const CollectionPage = ({ collection }) => {
       <Title>{title}</Title>
       <CollectionList>
         {items.map((item) => (
-          <CollectionItem key={uid()} item={item} />
+          <CollectionCard key={uid()} item={item} />
         ))}
       </CollectionList>
     </CollectionWrapper>
