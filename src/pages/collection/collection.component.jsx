@@ -8,7 +8,7 @@ import uid from 'utils/uid';
 
 import { CollectionWrapper, CollectionList, Title } from './collection.styles';
 
-const CollectionPage = ({ collection }) => {
+const Collection = ({ collection }) => {
   const { title, items } = collection;
 
   return (
@@ -23,7 +23,7 @@ const CollectionPage = ({ collection }) => {
   );
 };
 
-CollectionPage.propTypes = {
+Collection.propTypes = {
   collection: collectionTypes,
 };
 
@@ -31,4 +31,4 @@ const mapStateToProps = (state, ownProps) => ({
   collection: shopSelectors.selectCollection(ownProps.match.params.collectionId)(state),
 });
 
-export default connect(mapStateToProps)(CollectionPage);
+export default connect(mapStateToProps)(Collection);
