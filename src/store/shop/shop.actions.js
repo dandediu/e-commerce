@@ -29,4 +29,9 @@ const fetchCollectionsStartAsync = () => (dispatch) => {
     .catch((error) => dispatch(fetchCollectionFailure(error.message)));
 };
 
-export default { fetchCollectionsStartAsync };
+export default {
+  fetchCollectionsStart,
+  fetchCollectionSuccess,
+  fetchCollectionFailure,
+  fetchCollectionsStartAsync,
+};
