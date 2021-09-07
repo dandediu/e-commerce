@@ -1,28 +1,22 @@
 import React, { useState } from 'react';
-
+import { connect } from 'react-redux';
 import FormInput from 'components/form-input';
 import CustomButton from 'components/custom-button';
-import { auth, signInWithGoogle } from 'api/utils';
 
+import { userActions } from 'store/user';
 import { SignInWrapper, ButtonsWrapper } from './sign-in.styles';
 
-const SignIn = () => {
+const SignIn = ({ googleSignIn, emailSignIn }) => {
   const [formValue, setFormValue] = useState({
     email: '',
     password: '',
   });
-
   const { email, password } = formValue;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      await auth.signInWithEmailAndPassword(email, password);
-      setFormValue({ email: '', password: '' });
-    } catch (error) {
-      console.error(error);
-    }
+    emailSignIn(email, password);
   };
 
   const onHandleChange = (e) => {
@@ -56,7 +50,7 @@ const SignIn = () => {
         />
         <ButtonsWrapper>
           <CustomButton type="submit">Sign In</CustomButton>
-          <CustomButton type="button" onClick={signInWithGoogle} isGoogleSignIn>
+          <CustomButton type="button" onClick={googleSignIn} isGoogleSignIn>
             With Google
           </CustomButton>
         </ButtonsWrapper>
@@ -67,4 +61,9 @@ const SignIn = () => {
 
 SignIn.propTypes = {};
 
-export default SignIn;
+const mapDispatchToProps = (dispatch) => ({
+  googleSignIn: () => dispatch(userActions.googleSignInStart()),
+  emailSignIn: (email, password) => dispatch(userActions.emailSignInStart({ email, password })),
+});
+
+export default connect(null, mapDispatchToProps)(SignIn);

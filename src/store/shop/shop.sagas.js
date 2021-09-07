@@ -4,7 +4,6 @@ import { fireStore, convertCollectionsToSnapshotMap } from 'api/utils';
 import shopTypes from './shop.types';
 import shopActions from './shop.actions';
 
-// eslint-disable-next-line require-yield
 function* fetchCollectionAsync() {
   try {
     const collectionRef = fireStore.collection('collections');
