@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -11,31 +11,18 @@ import SignInAndSignUp from 'pages/auth';
 
 import Header from 'components/header';
 import Footer from 'components/footer';
-import { userSelectors } from 'store/user';
+import { userSelectors, userActions } from 'store/user';
 import APP_ROUTES from 'utils/const/app-routes';
 
 import './App.css';
 
-const App = ({ currentUser }) => {
-  // useEffect(() => {
-  //   const unsubscribe = auth.onAuthStateChanged(async (user) => {
-  //     if (user) {
-  //       const userRef = await createUserProfileDocument(user);
+const App = ({ currentUser, checkUserSession }) => {
+  useEffect(() => {
+    checkUserSession();
+  }, [checkUserSession]);
 
-  //       userRef.onSnapshot((snapShot) => {
-  //         setUser({ id: snapShot.id, ...snapShot.data() });
-  //       });
-  //     } else {
-  //       setUser(user);
-  //     }
-  //   });
-
-  //   return () => {
-  //     unsubscribe();
-  //   };
-  // }, []);
-
-  const renderAuthOrRedirect = () => (currentUser ? <Redirect to="/" /> : <SignInAndSignUp />);
+  const renderAuthOrRedirect = () =>
+    currentUser ? <Redirect to={APP_ROUTES.home} /> : <SignInAndSignUp />;
 
   return (
     <div className="app">
@@ -67,4 +54,8 @@ const mapStateToProps = createStructuredSelector({
   currentUser: userSelectors.selectCurrentUser,
 });
 
-export default connect(mapStateToProps, null)(App);
+const mapDispatchToProps = (dispatch) => ({
+  checkUserSession: () => dispatch(userActions.checkUserSession()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

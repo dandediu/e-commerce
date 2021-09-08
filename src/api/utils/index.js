@@ -4,3 +4,4 @@ export { default as createUserProfileDocument } from './crete-user-profile-docum
 export { default as addCollectionAndDocuments } from './add-collections-and-documents';
 export { default as convertCollectionsToSnapshotMap } from './convert-collections-to-snapshot-map';
 export { default as googleProvider } from './google-provider';
+export { default as getCurrentUser } from './get-current-user';
