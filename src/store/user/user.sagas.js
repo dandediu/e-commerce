@@ -46,6 +46,15 @@ function* isUserAuthenticated() {
   }
 }
 
+function* onSingOut() {
+  try {
+    yield auth.signOut();
+    yield put(userActions.signOutSuccess());
+  } catch (error) {
+    yield put(userActions.signOutFailure(error));
+  }
+}
+
 function* onGoogleSignInStart() {
   yield takeLatest(userTypes.GOOGLE_SIGN_IN_START, signInWithGoogle);
 }
@@ -58,13 +67,8 @@ function* onCheckUserSession() {
   yield takeLatest(userTypes.CHECK_USER_SESSION, isUserAuthenticated);
 }
 
-function* onSingOut() {
-  try {
-    yield auth.signOut();
-    yield put(userActions.signOutSuccess());
-  } catch (error) {
-    yield put(userActions.signOutFailure(error));
-  }
+function* onSingOutStart() {
+  yield takeLatest(userTypes.SIGN_OUT_START, onSingOut);
 }
 
 function* allUserSagas() {
@@ -72,7 +76,7 @@ function* allUserSagas() {
     call(onGoogleSignInStart),
     call(onEmailSignInStart),
     call(onCheckUserSession),
-    call(onSingOut),
+    call(onSingOutStart),
   ]);
 }
 
