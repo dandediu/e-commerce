@@ -13,10 +13,21 @@ const signInFailure = (error) => ({ type: userTypes.SIGN_IN_FAILURE, payload: er
 
 const checkUserSession = () => ({ type: userTypes.CHECK_USER_SESSION });
 
+const signOutStart = () => ({ type: userTypes.SIGN_OUT_START });
+
+const signOutSuccess = () => ({
+  type: userTypes.SIGN_OUT_SUCCESS,
+});
+
+const signOutFailure = (error) => ({ type: userTypes.SIGN_IN_FAILURE, payload: error });
+
 export default {
   googleSignInStart,
   emailSignInStart,
   signInFailure,
   signInSuccess,
   checkUserSession,
+  signOutStart,
+  signOutSuccess,
+  signOutFailure,
 };

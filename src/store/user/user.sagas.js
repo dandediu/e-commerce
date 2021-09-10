@@ -58,8 +58,22 @@ function* onCheckUserSession() {
   yield takeLatest(userTypes.CHECK_USER_SESSION, isUserAuthenticated);
 }
 
+function* onSingOut() {
+  try {
+    yield auth.signOut();
+    yield put(userActions.signOutSuccess());
+  } catch (error) {
+    yield put(userActions.signOutFailure(error));
+  }
+}
+
 function* allUserSagas() {
-  yield all([call(onGoogleSignInStart), call(onEmailSignInStart)], call[onCheckUserSession]);
+  yield all([
+    call(onGoogleSignInStart),
+    call(onEmailSignInStart),
+    call(onCheckUserSession),
+    call(onSingOut),
+  ]);
 }
 
 export default { allUserSagas };

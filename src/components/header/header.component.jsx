@@ -9,7 +9,7 @@ import CartIcon from 'components/cart-icon';
 import CartDropDown from 'components/dropdown';
 import { ReactComponent as Logo } from 'assets/crown.svg';
 import { cartSelectors } from 'store/cart';
-import { userSelectors } from 'store/user';
+import { userSelectors, userActions } from 'store/user';
 
 import {
   HeaderContainer,
@@ -21,7 +21,7 @@ import {
   OptionDiv,
 } from './header.styles';
 
-const Header = ({ currentUser, hidden }) => (
+const Header = ({ currentUser, hidden, signOut }) => (
   <HeaderContainer>
     <LogoContainer to={APP_ROUTES.home}>
       <Logo />
@@ -35,7 +35,7 @@ const Header = ({ currentUser, hidden }) => (
       </NavItem>
       <NavItem>
         {currentUser ? (
-          <OptionDiv onClick={() => auth.signOut()}>Sign out</OptionDiv>
+          <OptionDiv onClick={signOut}>Sign out</OptionDiv>
         ) : (
           <OptionLink to={APP_ROUTES.signIn}>Sign In</OptionLink>
         )}
@@ -60,4 +60,8 @@ const mapStateToProps = createStructuredSelector({
   hidden: cartSelectors.selectCartHidden,
 });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = (dispatch) => ({
+  signOut: () => dispatch(userActions.signOutStart),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -48,6 +48,7 @@ const App = ({ currentUser, checkUserSession }) => {
 
 App.propTypes = {
   currentUser: PropTypes.shape({}),
+  checkUserSession: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
