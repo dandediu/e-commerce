@@ -61,7 +61,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  signOut: () => dispatch(userActions.signOutStart),
+  signOut: () => dispatch(userActions.signOutStart()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
