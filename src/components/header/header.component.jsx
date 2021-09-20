@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import APP_ROUTES from 'utils/const/app-routes';
-import { auth } from 'api/utils';
 import CartIcon from 'components/cart-icon';
 import CartDropDown from 'components/dropdown';
 import { ReactComponent as Logo } from 'assets/crown.svg';
