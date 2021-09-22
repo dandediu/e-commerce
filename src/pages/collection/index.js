@@ -1,1 +1,1 @@
-export { default } from './collection.component';
+export { default } from './collection.container';
