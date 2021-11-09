@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { cartItemTypes } from 'utils/prop-types';
 import { cartActions } from 'store/cart';
@@ -16,8 +15,11 @@ import {
   Label,
 } from './checkout-item.styles';
 
-const CheckoutItem = ({ cartItem, addItem, removeItem, clearItem }) => {
+const CheckoutItem = ({ cartItem }) => {
   const { imageUrl, name, price, quantity } = cartItem;
+  const addItem = (item) => useDispatch(cartActions.addItem(item));
+  const removeItem = (item) => useDispatch(cartActions.removeItem(item));
+  const clearItem = (item) => useDispatch(cartActions.clearItem(item));
 
   return (
     <CheckoutItemWrapper>
@@ -40,15 +42,6 @@ const CheckoutItem = ({ cartItem, addItem, removeItem, clearItem }) => {
 
 CheckoutItem.propTypes = {
   cartItem: cartItemTypes,
-  addItem: PropTypes.func.isRequired,
-  removeItem: PropTypes.func.isRequired,
-  clearItem: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  addItem: (item) => dispatch(cartActions.addItem(item)),
-  removeItem: (item) => dispatch(cartActions.removeItem(item)),
-  clearItem: (item) => dispatch(cartActions.clearItem(item)),
-});
-
-export default connect(null, mapDispatchToProps)(CheckoutItem);
+export default CheckoutItem;

@@ -1,14 +1,16 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 import CollectionCard from 'components/collection-card';
 import { shopSelectors } from 'store/shop';
-import { collectionTypes } from 'utils/prop-types';
 import uid from 'utils/uid';
 
 import { CollectionWrapper, CollectionList, Title } from './collection.styles';
 
-const Collection = ({ collection }) => {
+const Collection = () => {
+  const { collectionId } = useParams();
+  const collection = useSelector(shopSelectors.selectCollection(collectionId));
   const { title, items } = collection;
 
   return (
@@ -23,12 +25,4 @@ const Collection = ({ collection }) => {
   );
 };
 
-Collection.propTypes = {
-  collection: collectionTypes,
-};
-
-const mapStateToProps = (state, ownProps) => ({
-  collection: shopSelectors.selectCollection(ownProps.match.params.collectionId)(state),
-});
-
-export default connect(mapStateToProps)(Collection);
+export default Collection;

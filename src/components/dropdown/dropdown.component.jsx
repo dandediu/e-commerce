@@ -1,11 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { withRouter } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import CartItem from 'components/cart-item';
-import { cartItemTypes } from 'utils/prop-types';
 import { cartSelectors, cartActions } from 'store/cart';
 import uid from 'utils/uid';
 
@@ -18,9 +15,12 @@ import {
   DropdownButton,
 } from './dropdown.styles';
 
-const CartDropDown = ({ cartItems, history, dispatch }) => {
-  const onCloseHandler = () => dispatch(cartActions.toggleCartHidden());
+const CartDropDown = () => {
+  const history = useHistory();
+  const cartItems = useSelector(cartSelectors.selectCartItems);
+  const dispatch = useDispatch();
 
+  const onCloseHandler = () => dispatch(cartActions.toggleCartHidden());
   const goCheckoutHandler = () => {
     history.push('/checkout');
     onCloseHandler();
@@ -49,14 +49,4 @@ const CartDropDown = ({ cartItems, history, dispatch }) => {
   );
 };
 
-CartDropDown.propTypes = {
-  cartItems: PropTypes.arrayOf(cartItemTypes),
-  history: PropTypes.shape({}),
-  dispatch: PropTypes.func,
-};
-
-const mapStateToProps = createStructuredSelector({
-  cartItems: cartSelectors.selectCartItems,
-});
-
-export default withRouter(connect(mapStateToProps)(CartDropDown));
+export default CartDropDown;
