@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { cartActions } from 'store/cart';
 import { collectionItemTypes } from 'utils/prop-types';
 
@@ -14,9 +14,10 @@ import {
   Label,
 } from './collection-card.styles';
 
-const CollectionCard = ({ item, width, addItem }) => {
+const CollectionCard = ({ item, width }) => {
   const { name, price, imageUrl } = item;
-  const addItemHandler = () => addItem(item);
+
+  const addItemHandler = () => useDispatch(cartActions.addItem(item));
 
   return (
     <CollectionCardWrapper width={width}>
@@ -39,11 +40,6 @@ const CollectionCard = ({ item, width, addItem }) => {
 CollectionCard.propTypes = {
   item: collectionItemTypes,
   width: PropTypes.number,
-  addItem: PropTypes.func,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  addItem: (item) => dispatch(cartActions.addItem(item)),
-});
-
-export default connect(null, mapDispatchToProps)(CollectionCard);
+export default CollectionCard;

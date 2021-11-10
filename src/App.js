@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Home from 'pages/home';
 import Shop from 'pages/shop';
@@ -16,13 +15,13 @@ import APP_ROUTES from 'utils/const/app-routes';
 
 import './App.css';
 
-const App = ({ currentUser, checkUserSession }) => {
-  useEffect(() => {
-    checkUserSession();
-  }, [checkUserSession]);
+const App = () => {
+  const currentUser = useSelector(userSelectors.selectCurrentUser);
+  const dispatch = useDispatch();
 
-  const renderAuthOrRedirect = () =>
-    currentUser ? <Redirect to={APP_ROUTES.home} /> : <SignInAndSignUp />;
+  useEffect(() => {
+    dispatch(userActions.checkUserSession());
+  }, [dispatch]);
 
   return (
     <div className="app">
@@ -38,7 +37,11 @@ const App = ({ currentUser, checkUserSession }) => {
           <Route path={APP_ROUTES.checkout}>
             <Checkout />
           </Route>
-          <Route exact path={APP_ROUTES.signIn} render={renderAuthOrRedirect} />
+          <Route
+            exact
+            path={APP_ROUTES.signIn}
+            render={() => (currentUser ? <Redirect to={APP_ROUTES.home} /> : <SignInAndSignUp />)}
+          />
         </Switch>
       </main>
       <Footer />
@@ -51,12 +54,4 @@ App.propTypes = {
   checkUserSession: PropTypes.func,
 };
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: userSelectors.selectCurrentUser,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  checkUserSession: () => dispatch(userActions.checkUserSession()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
