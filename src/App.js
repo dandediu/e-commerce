@@ -1,19 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-
-import Home from 'pages/home';
-import Shop from 'pages/shop';
-import Checkout from 'pages/checkout';
-import SignInAndSignUp from 'pages/auth';
-
 import Header from 'components/header';
 import Footer from 'components/footer';
+import Spinner from 'components/spinner';
 import { userSelectors, userActions } from 'store/user';
 import APP_ROUTES from 'utils/const/app-routes';
+import ErrorBoundary from 'components/error-boundary';
 
 import './App.css';
+
+const HomePage = lazy(() => import('pages/home'));
+const ShopPage = lazy(() => import('pages/shop'));
+const CheckoutPage = lazy(() => import('pages/checkout'));
+const AuthPage = lazy(() => import('pages/auth'));
+const ContactPage = lazy(() => import('pages/contact'));
 
 const App = () => {
   const currentUser = useSelector(userSelectors.selectCurrentUser);
@@ -30,18 +32,25 @@ const App = () => {
       </div>
       <main className="container">
         <Switch>
-          <Route exact path={APP_ROUTES.home}>
-            <Home />
-          </Route>
-          <Route path={APP_ROUTES.shop} component={(props) => <Shop {...props} />} />
-          <Route path={APP_ROUTES.checkout}>
-            <Checkout />
-          </Route>
-          <Route
-            exact
-            path={APP_ROUTES.signIn}
-            render={() => (currentUser ? <Redirect to={APP_ROUTES.home} /> : <SignInAndSignUp />)}
-          />
+          <ErrorBoundary>
+            <Suspense fallback={<Spinner />}>
+              <Route exact path={APP_ROUTES.home}>
+                <HomePage />
+              </Route>
+              <Route path={APP_ROUTES.shop} component={(props) => <ShopPage {...props} />} />
+              <Route path={APP_ROUTES.checkout}>
+                <CheckoutPage />
+              </Route>
+              <Route
+                exact
+                path={APP_ROUTES.signIn}
+                render={() => (currentUser ? <Redirect to={APP_ROUTES.home} /> : <AuthPage />)}
+              />
+              <Route path={APP_ROUTES.contact}>
+                <ContactPage />
+              </Route>
+            </Suspense>
+          </ErrorBoundary>
         </Switch>
       </main>
       <Footer />
