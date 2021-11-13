@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 
 import { cartItemTypes } from 'utils/prop-types';
 import { cartActions } from 'store/cart';
-
 import {
   CheckoutItemWrapper,
   ImageContainer,
@@ -16,10 +15,11 @@ import {
 } from './checkout-item.styles';
 
 const CheckoutItem = ({ cartItem }) => {
+  const dispatch = useDispatch();
   const { imageUrl, name, price, quantity } = cartItem;
-  const addItem = (item) => useDispatch(cartActions.addItem(item));
-  const removeItem = (item) => useDispatch(cartActions.removeItem(item));
-  const clearItem = (item) => useDispatch(cartActions.clearItem(item));
+  const addItem = (item) => dispatch(cartActions.addItem(item));
+  const removeItem = (item) => dispatch(cartActions.removeItem(item));
+  const clearItem = (item) => dispatch(cartActions.clearItem(item));
 
   return (
     <CheckoutItemWrapper>
@@ -44,4 +44,4 @@ CheckoutItem.propTypes = {
   cartItem: cartItemTypes,
 };
 
-export default CheckoutItem;
+export default React.memo(CheckoutItem);
