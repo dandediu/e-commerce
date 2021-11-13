@@ -15,9 +15,10 @@ import {
 } from './collection-card.styles';
 
 const CollectionCard = ({ item, width }) => {
+  const dispatch = useDispatch();
   const { name, price, imageUrl } = item;
 
-  const addItemHandler = () => useDispatch(cartActions.addItem(item));
+  const addItemHandler = () => dispatch(cartActions.addItem(item));
 
   return (
     <CollectionCardWrapper width={width}>
