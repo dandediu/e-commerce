@@ -48,23 +48,8 @@ const Message = styled.span`
   margin: 50px auto;
 `;
 
-const List = styled.ul`
-  height: 90%;
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-
-  @media ${breakpoints.tablet} {
-    height: 240px;
-  }
-`;
-
-const ListItem = styled.li`
-  margin-bottom: ${spacing.space};
-`;
-
 const DropdownButton = styled(CustomButton)`
   margin-top: ${spacing.space};
 `;
 
-export { DropdownInner, CloseButton, List, ListItem, Message, DropdownButton };
+export { DropdownInner, CloseButton, Message, DropdownButton };

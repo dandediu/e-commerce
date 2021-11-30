@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Menu/> expect to render component 1`] = `
+<styled.div>
+  <MenuItem
+    imageUrl="http://placehold.com"
+    isLarge={false}
+    key="0"
+    linkUrl="/lorem-ipsum"
+    title="Lorem Ipsum"
+  />
+</styled.div>
+`;

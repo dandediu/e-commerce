@@ -1,14 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-
 import APP_ROUTES from 'utils/const/app-routes';
 import CartIcon from 'components/cart-icon';
-import CartDropDown from 'components/dropdown';
+import DropDown from 'components/dropdown';
 import { ReactComponent as Logo } from 'assets/crown.svg';
-import { cartSelectors } from 'store/cart';
-import { userSelectors, userActions } from 'store/user';
 
 import {
   HeaderContainer,
@@ -20,7 +15,7 @@ import {
   OptionDiv,
 } from './header.styles';
 
-const Header = ({ currentUser, hidden, signOut }) => (
+const Header = ({ currentUser, hidden, onSingOut }) => (
   <HeaderContainer>
     <LogoContainer to={APP_ROUTES.home}>
       <Logo />
@@ -34,7 +29,7 @@ const Header = ({ currentUser, hidden, signOut }) => (
       </NavItem>
       <NavItem>
         {currentUser ? (
-          <OptionDiv onClick={signOut}>Sign out</OptionDiv>
+          <OptionDiv onClick={onSingOut}>Sign out</OptionDiv>
         ) : (
           <OptionLink to={APP_ROUTES.signIn}>Sign In</OptionLink>
         )}
@@ -42,7 +37,7 @@ const Header = ({ currentUser, hidden, signOut }) => (
       <NavItem>
         <DropDownWrapper>
           <CartIcon />
-          {hidden && <CartDropDown />}
+          {hidden && <DropDown />}
         </DropDownWrapper>
       </NavItem>
     </NavList>
@@ -52,15 +47,7 @@ const Header = ({ currentUser, hidden, signOut }) => (
 Header.propTypes = {
   currentUser: PropTypes.shape({}),
   hidden: PropTypes.bool,
+  onSingOut: PropTypes.func,
 };
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: userSelectors.selectCurrentUser,
-  hidden: cartSelectors.selectCartHidden,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  signOut: () => dispatch(userActions.signOutStart()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

@@ -1,8 +1,8 @@
-import { shape, string, number } from 'prop-types';
+import { shape, string, number, oneOfType } from 'prop-types';
 
 export default shape({
   imageUrl: string,
-  price: number,
+  price: oneOfType([string, number]),
   name: string,
   quantity: number,
 });

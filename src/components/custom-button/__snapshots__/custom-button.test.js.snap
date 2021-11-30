@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CustomButton/> expect to render component 1`] = `
+<styled.button
+  type="button"
+>
+  Lorem Ipsum
+</styled.button>
+`;

@@ -6,16 +6,3 @@ a {
 * {
   box-sizing: border-box;
 }
-
-.app {
-  min-height: 100vh;
-  margin: 0;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-}
-
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}

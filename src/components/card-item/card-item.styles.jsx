@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const CartItemWrapper = styled.div`
+const CardItemWrapper = styled.div`
   width: 100%;
   display: flex;
   height: 80px;
@@ -10,7 +10,7 @@ const Image = styled.img`
   width: 30%;
 `;
 
-const CartItemDetails = styled.div`
+const CardItemDetails = styled.div`
   width: 70%;
   display: flex;
   flex-direction: column;
@@ -23,4 +23,4 @@ const Label = styled.div`
   font-size: 16px;
 `;
 
-export { CartItemWrapper, Image, Label, CartItemDetails };
+export { CardItemWrapper, Image, Label, CardItemDetails };
