@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CollectionCard/> expect to render component 1`] = `
+<styled.div>
+  <styled.div
+    imageSrc="lorem-ipsum.jpg"
+  >
+    <styled.img
+      alt="No image"
+      src="lorem-ipsum.jpg"
+    />
+  </styled.div>
+  <styled.div>
+    <styled.div>
+      <styled.span>
+        Lorem dolor
+      </styled.span>
+      <styled.span>
+        100
+      </styled.span>
+    </styled.div>
+    <Styled(CustomButton)
+      isInverted={true}
+      type="button"
+    >
+      Add to cart
+    </Styled(CustomButton)>
+  </styled.div>
+</styled.div>
+`;

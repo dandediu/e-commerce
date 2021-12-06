@@ -9,7 +9,7 @@ exports[`<CollectionPreview/> expect to render component 1`] = `
     <styled.li
       key="000000000000"
     >
-      <CollectionCard
+      <CollectionCardContainer
         item={
           Object {
             "id": 1,

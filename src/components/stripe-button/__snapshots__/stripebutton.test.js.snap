@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StripeButton/> expect to render component 1`] = `
+<ReactStripeCheckout
+  ComponentClass="div"
+  amount={0}
+  billingAddress={true}
+  className="StripeCheckout"
+  description="Your total is $0"
+  image="https://sendeyo.com/en/f3eb2117da"
+  label="Pay now"
+  locale="auto"
+  name="CRWN Clothing Ltd."
+  panelLabel="Pay Now"
+  reconfigureOnUpdate={false}
+  shippingAddress={true}
+  stripeKey="pk_test_51IpqTEIIFcrk6zzLYwrFfxyybPPum0XdxZDSAstbx8rAMve88bV5iZVRN7UU51t5Bo4fblJJqqQTiLkQSBISAOjv00K8BRjhm5"
+  token={[Function]}
+  triggerEvent="onClick"
+>
+  <CustomButton
+    isStripe={true}
+    type="button"
+  >
+    Pay Now
+  </CustomButton>
+</ReactStripeCheckout>
+`;

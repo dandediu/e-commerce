@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header/> expect to render component 1`] = `
+<styled.div>
+  <Styled(Link)
+    to="/"
+  >
+    <ForwardRef(SvgCrown) />
+  </Styled(Link)>
+  <styled.ul>
+    <styled.li>
+      <Styled(Link)
+        to="/shop"
+      >
+        Shop
+      </Styled(Link)>
+    </styled.li>
+    <styled.li>
+      <Styled(Link)
+        to="/contact"
+      >
+        Contact
+      </Styled(Link)>
+    </styled.li>
+    <styled.li>
+      <styled.div
+        onClick={[MockFunction]}
+      >
+        Sign out
+      </styled.div>
+    </styled.li>
+    <styled.li>
+      <styled.div>
+        <CartIconContainer />
+        <DropDownContainer />
+      </styled.div>
+    </styled.li>
+  </styled.ul>
+</styled.div>
+`;

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FormInput/> expect to render component 1`] = `
+<styled.div>
+  <styled.input
+    id="loremIpsum"
+    onChange={[MockFunction]}
+  />
+</styled.div>
+`;
+
+exports[`<FormInput/> expect to render input component with label 1`] = `
+<styled.div>
+  <styled.input
+    id="loremIpsum"
+    onChange={[MockFunction]}
+    value=""
+  />
+  <styled.label
+    htmlFor="loremIpsum"
+    isShrink={0}
+  >
+    Lorem Ipsum
+  </styled.label>
+</styled.div>
+`;
