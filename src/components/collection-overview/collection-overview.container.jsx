@@ -8,6 +8,7 @@ import CollectionOverview from './collection-overview.component';
 
 const mapStateToProps = createStructuredSelector({
   isLoading: shopSelectors.selectIsCollectionFetching,
+  collections: shopSelectors.selectCollectionForPreview,
 });
 
 const CollectionOverviewContainer = compose(

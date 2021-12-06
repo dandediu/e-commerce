@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CollectionPreview/> expect to render component 1`] = `
+<styled.div>
+  <styled.h1>
+    LOREM IPSUM
+  </styled.h1>
+  <styled.ul>
+    <styled.li
+      key="000000000000"
+    >
+      <CollectionCard
+        item={
+          Object {
+            "id": 1,
+            "imageUrl": "http://placehold.com",
+            "name": "Sed lectus",
+            "price": 200,
+          }
+        }
+      />
+    </styled.li>
+  </styled.ul>
+</styled.div>
+`;

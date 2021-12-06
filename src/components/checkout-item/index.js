@@ -1,1 +1,1 @@
-export { default } from './checkout-item.component';
+export { default } from './checkout-item.container';

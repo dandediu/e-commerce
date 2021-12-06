@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignIn/> expect to render component 1`] = `
+<styled.div>
+  <h2>
+    I already have an account
+  </h2>
+  <span>
+    Sign in with your email and password
+  </span>
+  <form
+    id="signInForm"
+    onSubmit={[Function]}
+  >
+    <FormInput
+      handleChange={[Function]}
+      id="Email"
+      label="Email"
+      name="email"
+      required={true}
+      type="email"
+      value=""
+    />
+    <FormInput
+      handleChange={[Function]}
+      id="Password"
+      label="Password"
+      name="password"
+      required={true}
+      type="password"
+      value=""
+    />
+    <styled.div>
+      <CustomButton
+        id="signInEmail"
+        type="submit"
+      >
+        Sign In
+      </CustomButton>
+      <CustomButton
+        id="signInGoogle"
+        isGoogleSignIn={true}
+        onClick={[MockFunction]}
+        type="button"
+      >
+        With Google
+      </CustomButton>
+    </styled.div>
+  </form>
+</styled.div>
+`;

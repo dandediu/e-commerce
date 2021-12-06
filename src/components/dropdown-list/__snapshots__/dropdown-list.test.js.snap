@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DropdownList/> expect to render component 1`] = `
+<styled.ul>
+  <styled.li
+    key="000000000000"
+  >
+    <Memo(CardItem)
+      cartItem={
+        Object {
+          "imageUrl": "lorem-ipsum.jpg",
+          "name": "Lorem dolor",
+          "price": "100",
+          "quantity": 1,
+        }
+      }
+    />
+  </styled.li>
+</styled.ul>
+`;

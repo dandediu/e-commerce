@@ -1,52 +1,29 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { cardItemTypes } from 'utils/prop-types';
+import DropdownList from 'components/dropdown-list';
+import { DropdownInner, CloseButton, Message, DropdownButton } from './dropdown.styles';
 
-import CartItem from 'components/cart-item';
-import { cartSelectors, cartActions } from 'store/cart';
-import uid from 'utils/uid';
+const DropDown = ({ cartItems, onClose, onClickCheckout }) => (
+  <DropdownInner>
+    <CloseButton onClick={() => onClose()} type="button" isTransparent>
+      &#10005;
+    </CloseButton>
+    {cartItems.length > 0 ? (
+      <DropdownList cartItems={cartItems} />
+    ) : (
+      <Message>Your cart is empty</Message>
+    )}
+    <DropdownButton onClick={() => onClickCheckout()} type="button">
+      CHECKOUT
+    </DropdownButton>
+  </DropdownInner>
+);
 
-import {
-  DropdownInner,
-  CloseButton,
-  List,
-  Message,
-  ListItem,
-  DropdownButton,
-} from './dropdown.styles';
-
-const CartDropDown = () => {
-  const history = useHistory();
-  const cartItems = useSelector(cartSelectors.selectCartItems);
-  const dispatch = useDispatch();
-
-  const onCloseHandler = () => dispatch(cartActions.toggleCartHidden());
-  const goCheckoutHandler = () => {
-    history.push('/checkout');
-    onCloseHandler();
-  };
-
-  return (
-    <DropdownInner>
-      <CloseButton onClick={onCloseHandler} type="button" isTransparent>
-        &#10005;
-      </CloseButton>
-      <List>
-        {cartItems.length > 0 ? (
-          cartItems.map((item) => (
-            <ListItem key={uid()}>
-              <CartItem cartItem={item} />
-            </ListItem>
-          ))
-        ) : (
-          <Message>Your cart is empty</Message>
-        )}
-      </List>
-      <DropdownButton onClick={goCheckoutHandler} type="button">
-        CHECKOUT
-      </DropdownButton>
-    </DropdownInner>
-  );
+DropDown.propTypes = {
+  cartItems: PropTypes.arrayOf(cardItemTypes),
+  onClose: PropTypes.func,
+  onClickCheckout: PropTypes.func,
 };
 
-export default CartDropDown;
+export default DropDown;

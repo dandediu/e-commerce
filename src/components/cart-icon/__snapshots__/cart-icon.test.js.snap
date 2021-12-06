@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CardItem/> expect to render component 1`] = `
+<styled.div
+  onClick={[MockFunction]}
+>
+  <styled.span>
+    1
+  </styled.span>
+  <Styled(Component) />
+</styled.div>
+`;

@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DropDown/> expect to render component 1`] = `
+<styled.div>
+  <Styled(CustomButton)
+    isTransparent={true}
+    onClick={[Function]}
+    type="button"
+  >
+    ✕
+  </Styled(CustomButton)>
+  <DropdownList
+    cartItems={
+      Array [
+        Object {
+          "imageUrl": "lorem-ipsum.jpg",
+          "name": "Lorem dolor",
+          "price": "100",
+          "quantity": 1,
+        },
+      ]
+    }
+  />
+  <Styled(CustomButton)
+    onClick={[Function]}
+    type="button"
+  >
+    CHECKOUT
+  </Styled(CustomButton)>
+</styled.div>
+`;

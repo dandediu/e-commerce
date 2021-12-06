@@ -1,1 +1,1 @@
-export { default } from './menu.component';
+export { default } from './menu.container';

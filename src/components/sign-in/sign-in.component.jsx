@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 import FormInput from 'components/form-input';
 import CustomButton from 'components/custom-button';
+import PropTypes from 'prop-types';
 
-import { userActions } from 'store/user';
 import { SignInWrapper, ButtonsWrapper } from './sign-in.styles';
 
-const SignIn = ({ googleSignIn, emailSignIn }) => {
+const SignIn = ({ onClickGoogleSignIn, onSubmit }) => {
   const [formValue, setFormValue] = useState({
     email: '',
     password: '',
@@ -16,7 +15,7 @@ const SignIn = ({ googleSignIn, emailSignIn }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    emailSignIn(email, password);
+    onSubmit(email, password);
   };
 
   const onHandleChange = (e) => {
@@ -29,7 +28,7 @@ const SignIn = ({ googleSignIn, emailSignIn }) => {
     <SignInWrapper>
       <h2>I already have an account</h2>
       <span>Sign in with your email and password</span>
-      <form onSubmit={handleSubmit}>
+      <form id="signInForm" onSubmit={handleSubmit}>
         <FormInput
           id="Email"
           label="Email"
@@ -49,8 +48,15 @@ const SignIn = ({ googleSignIn, emailSignIn }) => {
           required
         />
         <ButtonsWrapper>
-          <CustomButton type="submit">Sign In</CustomButton>
-          <CustomButton type="button" onClick={googleSignIn} isGoogleSignIn>
+          <CustomButton id="signInEmail" type="submit">
+            Sign In
+          </CustomButton>
+          <CustomButton
+            id="signInGoogle"
+            type="button"
+            onClick={onClickGoogleSignIn}
+            isGoogleSignIn
+          >
             With Google
           </CustomButton>
         </ButtonsWrapper>
@@ -59,11 +65,9 @@ const SignIn = ({ googleSignIn, emailSignIn }) => {
   );
 };
 
-SignIn.propTypes = {};
+SignIn.propTypes = {
+  onClickGoogleSignIn: PropTypes.func,
+  onSubmit: PropTypes.func,
+};
 
-const mapDispatchToProps = (dispatch) => ({
-  googleSignIn: () => dispatch(userActions.googleSignInStart()),
-  emailSignIn: (email, password) => dispatch(userActions.emailSignInStart({ email, password })),
-});
-
-export default connect(null, mapDispatchToProps)(SignIn);
+export default SignIn;

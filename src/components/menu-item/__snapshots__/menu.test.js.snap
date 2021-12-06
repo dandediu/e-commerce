@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MenuItem/> expect to render component 1`] = `
+<styled.div
+  onClick={[Function]}
+>
+  <styled.div />
+  <styled.div>
+    <styled.h1 />
+    <styled.span
+      className="subtitle"
+    >
+      Shop Now
+    </styled.span>
+  </styled.div>
+</styled.div>
+`;

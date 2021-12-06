@@ -1,8 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-
-import { cartItemTypes } from 'utils/prop-types';
-import { cartActions } from 'store/cart';
+import PropTypes from 'prop-types';
+import { cardItemTypes } from 'utils/prop-types';
 import {
   CheckoutItemWrapper,
   ImageContainer,
@@ -14,12 +12,8 @@ import {
   Label,
 } from './checkout-item.styles';
 
-const CheckoutItem = ({ cartItem }) => {
-  const dispatch = useDispatch();
-  const { imageUrl, name, price, quantity } = cartItem;
-  const addItem = (item) => dispatch(cartActions.addItem(item));
-  const removeItem = (item) => dispatch(cartActions.removeItem(item));
-  const clearItem = (item) => dispatch(cartActions.clearItem(item));
+const CheckoutItem = ({ cardItem, addItem, removeItem, clearItem }) => {
+  const { imageUrl, name, price, quantity } = cardItem;
 
   return (
     <CheckoutItemWrapper>
@@ -29,19 +23,22 @@ const CheckoutItem = ({ cartItem }) => {
       <CheckoutItemSection>
         <Label>{name}</Label>
         <Label>
-          <Arrow onClick={() => removeItem(cartItem)}>&#10094;</Arrow>
+          <Arrow onClick={() => removeItem(cardItem)}>&#10094;</Arrow>
           <Value>{quantity}</Value>
-          <Arrow onClick={() => addItem(cartItem)}>&#10095;</Arrow>
+          <Arrow onClick={() => addItem(cardItem)}>&#10095;</Arrow>
         </Label>
         <Label>{price}</Label>
-        <RemoveButton onClick={() => clearItem(cartItem)}>&#10005;</RemoveButton>
+        <RemoveButton onClick={() => clearItem(cardItem)}>&#10005;</RemoveButton>
       </CheckoutItemSection>
     </CheckoutItemWrapper>
   );
 };
 
 CheckoutItem.propTypes = {
-  cartItem: cartItemTypes,
+  cardItem: cardItemTypes,
+  addItem: PropTypes.func.isRequired,
+  removeItem: PropTypes.func.isRequired,
+  clearItem: PropTypes.func.isRequired,
 };
 
-export default React.memo(CheckoutItem);
+export default CheckoutItem;

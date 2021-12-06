@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer/> expect to render component 1`] = `
+<styled.div>
+  <styled.span>
+    @Copyright 2021
+  </styled.span>
+</styled.div>
+`;

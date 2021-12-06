@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CollectionOverview/> expect to render component 1`] = `
+<styled.div>
+  <CollectionPreviewContainer
+    items={
+      Array [
+        Object {
+          "id": 1,
+          "imageUrl": "http://placehold.com",
+          "name": "Sed lectus",
+          "price": 200,
+        },
+      ]
+    }
+    key="000000000000"
+    routeName="/lorem-ipsum"
+    title="Lorem Ipsum"
+  />
+</styled.div>
+`;

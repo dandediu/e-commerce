@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import breakpoints from 'utils/styles/breakpoints';
 import spacing from 'utils/styles/spacing';
 import { borders, boxShadow } from 'utils/styles/vars';
 import CustomButton from 'components/custom-button';
