@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MainPage/> expect to render component 1`] = `
+<styled.div>
+  <styled.div>
+    <HeaderContainer />
+  </styled.div>
+  <styled.main>
+    <Switch>
+      <ErrorBoundary>
+        <Suspense
+          fallback={<Spinner />}
+        >
+          <Route
+            exact={true}
+            path="/"
+          >
+            <lazy />
+          </Route>
+          <Route
+            component={[Function]}
+            path="/shop"
+          />
+          <Route
+            path="/checkout"
+          >
+            <lazy />
+          </Route>
+          <Route
+            exact={true}
+            path="/sign_in"
+            render={[Function]}
+          />
+          <Route
+            path="/contact"
+          >
+            <lazy />
+          </Route>
+        </Suspense>
+      </ErrorBoundary>
+    </Switch>
+  </styled.main>
+  <Footer />
+</styled.div>
+`;

@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CheckoutPage/> expect to render component 1`] = `
+<styled.div>
+  <styled.h1>
+    Checkout
+  </styled.h1>
+  <Memo(CheckoutItemContainer)
+    cardItem={
+      Object {
+        "id": 3,
+        "imageUrl": "http://placeholder.com/150",
+        "name": "Phasellus consectetuer vestibulum elit.",
+        "price": 100,
+        "quantity": 1,
+      }
+    }
+    key="000000000000"
+  />
+  <styled.div>
+    <styled.div>
+      Total: $100
+    </styled.div>
+    <StripeButton
+      price={100}
+    />
+  </styled.div>
+  <styled.div>
+    *Please use following test credit card for payments.
+    <br />
+    4242 4242 4242 4242 = Exp: 01/24 - CVV: 123
+  </styled.div>
+</styled.div>
+`;

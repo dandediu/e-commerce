@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ShopPage/> expect to render component 1`] = `
+<Fragment>
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "type": [Function],
+      }
+    }
+    exact={true}
+    path="/collections"
+  />
+  <Route
+    component={
+      Object {
+        "$$typeof": Symbol(react.memo),
+        "WrappedComponent": [Function],
+        "compare": null,
+        "type": [Function],
+      }
+    }
+    exact={true}
+    path="/collections/:collectionId"
+  />
+</Fragment>
+`;

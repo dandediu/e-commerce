@@ -6,7 +6,7 @@ exports[`<DropdownList/> expect to render component 1`] = `
     key="000000000000"
   >
     <Memo(CardItem)
-      cartItem={
+      cardItem={
         Object {
           "imageUrl": "lorem-ipsum.jpg",
           "name": "Lorem dolor",

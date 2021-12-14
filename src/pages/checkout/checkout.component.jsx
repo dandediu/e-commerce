@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import CheckoutItem from 'components/checkout-item';
 import { cartSelectors } from 'store/cart';
 import StripeButton from 'components/stripe-button';
-
+import uid from 'utils/uid';
 import {
   CheckoutPageWrapper,
   CheckoutHeader,
@@ -13,7 +13,7 @@ import {
   WarningMessage,
 } from './checkout.styles';
 
-const Checkout = () => {
+const CheckoutPage = () => {
   const cartItems = useSelector(cartSelectors.selectCartItems);
   const total = useSelector(cartSelectors.selectCartTotal);
 
@@ -21,7 +21,7 @@ const Checkout = () => {
     <CheckoutPageWrapper>
       <CheckoutHeader>Checkout</CheckoutHeader>
       {cartItems.map((item) => (
-        <CheckoutItem key={item.id} cartItem={item} />
+        <CheckoutItem key={uid()} cardItem={item} />
       ))}
       <CheckoutFooter>
         <CheckoutTotal>{`Total: $${total}`}</CheckoutTotal>
@@ -36,4 +36,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default CheckoutPage;

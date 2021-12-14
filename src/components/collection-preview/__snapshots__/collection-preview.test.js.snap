@@ -2,7 +2,9 @@
 
 exports[`<CollectionPreview/> expect to render component 1`] = `
 <styled.div>
-  <styled.h1>
+  <styled.h1
+    onClick={[Function]}
+  >
     LOREM IPSUM
   </styled.h1>
   <styled.ul>
