@@ -8,7 +8,7 @@ import uid from 'utils/uid';
 
 import { CollectionWrapper, CollectionList, Title } from './collection.styles';
 
-const Collection = () => {
+const CollectionPage = () => {
   const { collectionId } = useParams();
   const collection = useSelector(shopSelectors.selectCollection(collectionId));
   const { title, items } = collection;
@@ -25,4 +25,4 @@ const Collection = () => {
   );
 };
 
-export default Collection;
+export default CollectionPage;

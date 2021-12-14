@@ -3,6 +3,6 @@ import { string, shape, number, oneOfType } from 'prop-types';
 export default shape({
   id: oneOfType([string, number]),
   name: string,
-  price: number,
+  price: oneOfType([string, number]),
   imageUrl: string,
 });

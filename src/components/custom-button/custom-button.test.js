@@ -9,9 +9,9 @@ describe('<CustomButton/>', () => {
   };
 
   it('expect to render component', () => {
-    const cardIconWrapper = shallow(<CustomButton {...mockProps} />);
+    const wrapper = shallow(<CustomButton {...mockProps} />);
 
-    expect(cardIconWrapper).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('test click event', () => {

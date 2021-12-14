@@ -9,7 +9,7 @@ const DropdownList = ({ cardItems = [] }) => (
   <List>
     {cardItems.map((item) => (
       <ListItem key={uid()}>
-        <CardItem cartItem={item} />
+        <CardItem cardItem={item} />
       </ListItem>
     ))}
   </List>

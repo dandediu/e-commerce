@@ -10,7 +10,7 @@ exports[`<DropDown/> expect to render component 1`] = `
     ✕
   </Styled(CustomButton)>
   <DropdownList
-    cartItems={
+    cardItems={
       Array [
         Object {
           "imageUrl": "lorem-ipsum.jpg",

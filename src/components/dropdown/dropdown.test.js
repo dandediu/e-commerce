@@ -4,7 +4,7 @@ import DropDown from './dropdown.component';
 
 describe('<DropDown/>', () => {
   const mockProps = {
-    cartItems: [
+    cardItems: [
       {
         imageUrl: 'lorem-ipsum.jpg',
         price: '100',

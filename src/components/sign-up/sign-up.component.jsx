@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 import CustomButton from 'components/custom-button';
 import FormInput from 'components/form-input';
-import { userActions } from 'store/user';
+import PropTypes from 'prop-types';
 
 import { SignUpWrapper } from './sign-up.styles';
 
-const SignUp = ({ signUp }) => {
+const SignUp = ({ onSubmit }) => {
   const initialState = { displayName: '', password: '', confirmPassword: '', email: '' };
   const [formState, setFormState] = useState(initialState);
   const { displayName, password, confirmPassword, email } = formState;
@@ -17,7 +16,7 @@ const SignUp = ({ signUp }) => {
     if (password !== confirmPassword) {
       alert(`Passwords don't match.`);
     }
-    signUp({ displayName, email, password });
+    onSubmit({ displayName, email, password });
   };
 
   const handleOnChange = (e) => {
@@ -70,8 +69,7 @@ const SignUp = ({ signUp }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  signUp: (userCredentials) => dispatch(userActions.signUpStart(userCredentials)),
-});
-
-export default connect(null, mapDispatchToProps)(SignUp);
+SignUp.propTypes = {
+  onSubmit: PropTypes.func,
+};
+export default SignUp;

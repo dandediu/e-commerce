@@ -1,15 +1,14 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import SignIn from './sign-in.component';
+import SignUp from './sign-up.component';
 
-describe('<SignIn/>', () => {
+describe('<SignUp/>', () => {
   const mockProps = {
-    onClickGoogleSignIn: jest.fn(),
     onSubmit: jest.fn(),
   };
 
   it('expect to render component', () => {
-    const wrapper = shallow(<SignIn {...mockProps} />);
+    const wrapper = shallow(<SignUp {...mockProps} />);
 
     expect(wrapper).toMatchSnapshot();
   });

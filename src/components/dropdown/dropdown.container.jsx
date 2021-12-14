@@ -8,7 +8,7 @@ import DropDown from './dropdown.component';
 const DropDownContainer = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const cartItems = useSelector(cartSelectors.selectCartItems);
+  const cardItems = useSelector(cartSelectors.selectCartItems);
 
   const onCloseHandler = () => dispatch(cartActions.toggleCartHidden());
   const goToCheckout = () => {
@@ -16,7 +16,7 @@ const DropDownContainer = () => {
     onCloseHandler();
   };
 
-  return <DropDown cartItems={cartItems} onClose={onCloseHandler} onClickCheckout={goToCheckout} />;
+  return <DropDown cardItems={cardItems} onClose={onCloseHandler} onClickCheckout={goToCheckout} />;
 };
 
 export default DropDownContainer;

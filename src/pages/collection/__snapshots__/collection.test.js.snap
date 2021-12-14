@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CollectionPage/> expect to render component 1`] = `
+<styled.div>
+  <styled.h1>
+    Hats
+  </styled.h1>
+  <styled.ul>
+    <CollectionCardContainer
+      item={
+        Object {
+          "id": 1,
+          "imageUrl": "https://placeholder.com/150",
+          "name": "Blue Beanie",
+          "price": 25,
+        }
+      }
+      key="000000000000"
+    />
+  </styled.ul>
+</styled.div>
+`;

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WithSpinner(<MockComponent/>) expect to render component 1`] = `<Spinner />`;
+
+exports[`WithSpinner(<MockComponent/>) should render <MockComponent/> when the condition fails 1`] = `<MockComponent />`;
+
+exports[`WithSpinner(<MockComponent/>) should render the <Spinner/> only when the condition passes 1`] = `<Spinner />`;
